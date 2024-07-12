@@ -7,42 +7,42 @@
 
 do
 
-local _stop = _stop
-local _mkdir = _mkdir
-local _print_p8scii = _print_p8scii
-local _map_ram = _map_ram
-local _ppeek = _ppeek
-local _create_process_from_code = _create_process_from_code
-local _unmap_ram = _unmap_ram
-local _store_metadata = _store_metadata
-local _fdelete = _fdelete
-local _apply_system_settings = _apply_system_settings
-local _get_process_display_size = _get_process_display_size
-local _run_process_slice = _run_process_slice
-local _fetch_local = _fetch_local
-local _get_clipboard_text = _get_clipboard_text
-local _blit_process_video = _blit_process_video
-local _set_clipboard_text = _set_clipboard_text
-local _req_clipboard_text = _req_clipboard_text
-local _set_spr = _set_spr
-local _ppeek4 = _ppeek4
-local _fetch_metadata = _fetch_metadata
-local _store_local = _store_local
-local _set_draw_target = _set_draw_target
-local _get_process_list = _get_process_list
-local _pod = _pod
-local _kill_process = _kill_process
-local _read_message = _read_message
-local _fcopy = _fcopy
-local _draw_map = _draw_map
-local _halt = _halt
+ _stop = _stop
+ _mkdir = _mkdir
+ _print_p8scii = _print_p8scii
+ _map_ram = _map_ram
+ _ppeek = _ppeek
+ _create_process_from_code = _create_process_from_code
+ _unmap_ram = _unmap_ram
+ _store_metadata = _store_metadata
+ _fdelete = _fdelete
+ _apply_system_settings = _apply_system_settings
+ _get_process_display_size = _get_process_display_size
+ _run_process_slice = _run_process_slice
+ _fetch_local = _fetch_local
+ _get_clipboard_text = _get_clipboard_text
+ _blit_process_video = _blit_process_video
+ _set_clipboard_text = _set_clipboard_text
+ _req_clipboard_text = _req_clipboard_text
+ _set_spr = _set_spr
+ _ppeek4 = _ppeek4
+ _fetch_metadata = _fetch_metadata
+ _store_local = _store_local
+ _set_draw_target = _set_draw_target
+ _get_process_list = _get_process_list
+ _pod = _pod
+ _kill_process = _kill_process
+ _read_message = _read_message
+ _fcopy = _fcopy
+ _draw_map = _draw_map
+ _halt = _halt
 
-local _fetch_local = _fetch_local
-local _fetch_remote = _fetch_remote
-local _fetch_anywhen = _fetch_anywhen
-local _fetch_remote_result = _fetch_remote_result
-local _store_local = _store_local
-local _signal = _signal
+ _fetch_local = _fetch_local
+ _fetch_remote = _fetch_remote
+ _fetch_anywhen = _fetch_anywhen
+ _fetch_remote_result = _fetch_remote_result
+ _store_local = _store_local
+ _signal = _signal
 
 
 function reset()
