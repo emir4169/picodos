@@ -7,7 +7,7 @@ local sdat = fetch"/appdata/system/settings.pod"
 --	-- install defaults
 --	sdat = fetch"/system/misc/default_settings.pod"
 --	store("/appdata/system/settings.pod", sdat)
-end
+--end
 
 -- newer settings that should default to a non-nil value
 if (sdat.anywhen == nil) then
