@@ -66,4 +66,3 @@ create_process("/system/terminal.lua",
     immortal   = true -- exit() is a NOP; separate from window attribute :/
 }
 )
-printh("maybe here")

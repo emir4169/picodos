@@ -10,17 +10,15 @@
 
 
 ]]
-
-
 -- set preferred window size unless about to corun a program (which should be the one to create the window w/ size, icon)
 -- this window size might be overwritten by env().window_attribs
-if (not env().corun_program) then
-	window{
-		width=320,
-		height=160,
-		icon = userdata"[gfx]0907000707000000070000777777777770000077770000077770000077777777777[/gfx]"
-	}
-end
+--if (not env().corun_program) then
+--	window{
+--		width=320,
+--		height=160,
+--		icon = userdata"[gfx]0907000707000000070000777777777770000077770000077770000077777777777[/gfx]"
+--	}
+--end
 
 
 
@@ -92,7 +90,6 @@ local function run_cproj_callback(func, label)
 	
 
 	--if (res == 3) running_cproj = false -- 
-
 	if (err) then
 		set_draw_target() -- prevent drawing error to back page or whatever the program is drawing to
 		add_line("\feRUNTIME ERROR: [callback] "..tostr(label))
@@ -155,7 +152,7 @@ end
 
 
 local function try_multiple_extensions(prog_name)
---	printh(" - - - - trying multiple entensions for: "..tostr(prog_name))
+	printh(" - - - - trying multiple entensions for: "..tostr(prog_name))
 
 	if (type(prog_name) ~= "string") return nil
 
@@ -165,7 +162,7 @@ local function try_multiple_extensions(prog_name)
 		(fstat(prog_name..".lua") and prog_name..".lua") or
 		(fstat(prog_name..".p64") and prog_name..".p64") or -- only .p64 carts can be run without specifying extension (would be overkill; reduce ambiguity)
 		nil
-	--printh(" - - - - - - - - -")
+	printh(" - - - - - - - - -")
 	return res
 
 end
@@ -439,7 +436,7 @@ local function find_common_prefix(s0, s1)
 	local len = 0
 	while(sub(s0,1,len+1) == sub(s1,1,len+1)) do
 		len = len + 1
-		--printh(len)
+		printh(len)
 	end
 
 	return sub(s0,1,len)
@@ -483,7 +480,7 @@ local function tab_complete_filename()
 	local single_filename = nil
 
 	for i=1,#files do
-		--printh(prefix.." :: "..files[i])
+		printh(prefix.." :: "..files[i])
 		if (sub(files[i], 1, #prefix) == prefix) then
 			matches = matches + 1
 			local candidate = sub(files[i], #prefix + 1) -- remainder
@@ -530,17 +527,6 @@ local tv_frames =
 }
 
 function _update()
-
-	-- app is pauseable when and only when running_cproj is true and fullscreen
-
-	if (get_display()) then
-		local w,h = get_display():attribs()
-		local pauseable1 = running_cproj and w == 480 and h == 270
-		if (last_pauseable ~= pauseable1) then
-			last_pauseable = pauseable1
-			window{pauseable = last_pauseable}
-		end
-	end
 
 	if (running_cproj and not cproj_update and not cproj_draw) then
 		suspend_cproj()
@@ -670,7 +656,6 @@ function _update()
 
 end
 
-
 function _draw()
 
 	local disp = get_display()
@@ -772,12 +757,12 @@ end)
 
 -- window manager can tell guest program to halt
 -- (usually by pressing escape)
-on_event("halt", function(msg)
-	if (running_cproj) then
-		suspend_cproj()
-		
-	end
-end)
+--on_event("halt", function(msg)
+--	if (running_cproj) then
+--		suspend_cproj()
+--		
+--	end
+--end)
 
 
 
@@ -817,28 +802,28 @@ on_event("mousewheel", function(msg)
 end)
 
 
-on_event("reload_src", function(msg)
+--on_event("reload_src", function(msg)
+--
+--	-- security: only accept from window manager
+--	if (msg._from ~= 3) then
+--		return
+--	end
+--
+--	local prog_name = msg.working_file -- env().corun_program
+--	local prog_str = fetch(prog_name)
+--
+--	local f = load(prog_str, "@"..prog_name, "t", _ENV)
+--
+--	if (f) then
+--		f()
+--	else
+--		-- to do: how to return error?
+--	end
+--
+--
+--end)
 
-	-- security: only accept from window manager
-	if (msg._from ~= 3) then
-		return
-	end
 
-	local prog_name = msg.working_file -- env().corun_program
-	local prog_str = fetch(prog_name)
-
-	local f = load(prog_str, "@"..prog_name, "t", _ENV)
-
-	if (f) then
-		f()
-	else
-		-- to do: how to return error?
-	end
-
-
-end)
-
-
-on_event("resize", function(msg)
-	show_last_line()
-end)
+--on_event("resize", function(msg)
+--	show_last_line()
+--end)

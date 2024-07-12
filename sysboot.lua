@@ -46,3 +46,29 @@ else
 		startup_func()
 	end
 end
+
+-- boot sound
+sfx_index = 0
+sfx_delay = 1000 --1200
+r = fetch"/system/misc/boot.sfx"
+
+
+for i=0,0x2ff do
+	poke(0x30000+i*0x100, get(r,i*0x100,0x100))
+end
+
+
+local total_frames = 0
+local played_boot_sound = false
+
+while (true) do -- \m/
+
+	printh("------------ mainloop "..total_frames.." ----------------")
+	total_frames += 1
+
+	-- use time() for better sync
+	if not played_boot_sound and stat(987) >= sfx_delay then
+		played_boot_sound = true
+		sfx(sfx_index)
+	end
+end
